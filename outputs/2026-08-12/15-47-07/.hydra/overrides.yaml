@@ -1,6 +1,0 @@
-- task=tienkung_pro/hdmi/scenario
-- task.num_envs=200
-- num_episodes=1000
-- headless=true
-- algo=ppo_roa_adapt_est
-- checkpoint_path=/home/cai/humanoid_ws/HDMI_Tienkung_Pro/checkpoint_final.pt

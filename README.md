@@ -1,34 +1,3 @@
-# HDMI: Learning Interactive Humanoid Whole-Body Control from Human Videos
-### — TienKung Pro fork
-
-<div align="center">
-<a href="https://hdmi-humanoid.github.io/">
-  <img alt="Website" src="https://img.shields.io/badge/Website-Visit-blue?style=flat&logo=google-chrome"/>
-</a>
-
-<a href="https://www.youtube.com/watch?v=GvIBzM7ieaA&list=PL0WMh2z6WXob0roqIb-AG6w7nQpCHyR0Z&index=12">
-  <img alt="Video" src="https://img.shields.io/badge/Video-YouTube-red?style=flat&logo=youtube"/>
-</a>
-
-<a href="https://arxiv.org/pdf/2509.16757">
-  <img alt="Arxiv" src="https://img.shields.io/badge/Paper-Arxiv-b31b1b?style=flat&logo=arxiv"/>
-</a>
-
-<a href="https://github.com/LeCAR-Lab/HDMI/stargazers">
-    <img alt="GitHub stars" src="https://img.shields.io/github/stars/LeCAR-Lab/HDMI?style=social"/>
-</a>
-</div>
-
-HDMI는 사람 시연 영상(monocular RGB)에서 휴머노이드의 전신 상호작용 스킬을 학습하는 프레임워크입니다.
-이 저장소는 원본 [LeCAR-Lab/HDMI](https://github.com/LeCAR-Lab/HDMI)를 **TienKung Pro** 로봇에 맞춰 확장한 포크입니다.
-Isaac Sim / IsaacLab 위에서 동작하며, 설정은 전부 **Hydra**, 학습·롤아웃은 **torchrl / tensordict** 기반입니다.
-
-> 아래 한국어 가이드가 이 포크의 기준 문서입니다. 원본 저장소의 영문 문서는 맨 아래
-> [Upstream documentation (English)](#upstream-documentation-english) 절에 그대로 보존해 두었습니다.
-> 원본 문서의 설치 절차(Python 3.10 / IsaacSim 4.5.0 / IsaacLab v2.2.0)는 **이 포크에는 맞지 않습니다.**
-
----
-
 ## 목차
 
 1. [요구 사항](#1-요구-사항)
@@ -106,9 +75,6 @@ git clone https://github.com/isaac-sim/IsaacLab.git
 cd IsaacLab
 git checkout v2.3.0
 
-# isaaclab / isaaclab_assets / isaaclab_tasks ... 를 editable로 설치
-# -i none  : RL 프레임워크(rsl-rl, skrl, sb3 ...)는 설치하지 않음 (HDMI는 자체 PPO 사용)
-# -i       : 모든 RL 프레임워크까지 설치 (디스크 여유가 있으면 이쪽도 무방)
 ./isaaclab.sh -i none
 ```
 
@@ -263,7 +229,7 @@ run:<entity/project/run_id>:2200    # 특정 스텝 체크포인트
 ```bash
 python scripts/play.py algo=ppo_roa_adapt_est task=tienkung_pro/hdmi/scenario \
   checkpoint_path=/abs/path/checkpoint_final.pt \
-  headless=false task.num_envs=1
+  headless=false task.num_envs=1 app.enable_cameras=true export_policy=true
 ```
 
 `cfg/play.yaml`의 기본값은 `headless: true`, `task.num_envs: 100`입니다. 눈으로 보려면 위처럼 `headless=false`를, 뷰어 카메라 좌표를 그대로 쓰려면 `task.num_envs=1`을 함께 넘기세요.
@@ -281,13 +247,6 @@ task.viewer.eye=[6.4,5.0,4.7] task.viewer.lookat=[0.,0.,0.5]
 | `visualize_camera` | `true`/`false` | 카메라 영상 표시 여부 |
 | `camera_mode` | `ego_rgb` / `ego_depth` | RGB 또는 깊이(JET 컬러맵) |
 | `camera_viewer` | `isaac` / `opencv` | `isaac`: IsaacLab UI 안의 도킹 가능한 창(기본), `opencv`: 별도 cv2 창 |
-
-**그 외**
-
-```bash
-export_policy=true                       # 정책을 ONNX로 export
-+task.command.replay_motion=true         # 정책 대신 레퍼런스 모션을 그대로 재생 (데이터 확인용)
-```
 
 ---
 
