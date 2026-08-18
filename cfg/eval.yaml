@@ -1,0 +1,56 @@
+# hydra.job.chdir: false
+
+headless: true
+
+app:
+  headless: ${..headless}
+  enable_cameras: ! ${..eval_render}
+
+sim: ${task.sim}
+# env: ${task.env}
+
+total_frames: -1
+max_iters: -1
+eval_interval: -1
+eval_render: false
+render_mode: rgb_array
+save_interval: -1
+seed: 100
+checkpoint_path: null
+vecnorm: eval # ${oc.select:algo.vecnorm,train}
+
+camera_follow: true
+
+# --- evaluation (scripts/eval.py) ---
+# number of *finished* episodes to aggregate; environments terminate
+# independently and keep starting new episodes until this budget is met
+num_episodes: 1000
+# use the deterministic (mode) action instead of sampling
+deterministic: true
+# print "Evaluation Progress: x / N" every this many finished episodes
+# (null => every task.num_envs episodes)
+progress_every: null
+# safety cap on environment steps (null => derived from max_episode_length)
+max_eval_steps: null
+# print the list of successful trials (<env_id>:<episode_index>) after the summary
+print_success_episodes: true
+
+wandb:
+  group: ${oc.select:..task.name}
+  run_name: ${oc.select:..task.name,test}-${oc.select:..algo.name,none}
+  job_type: train
+  entity: btx0424
+  project: adaptation
+  mode: online # set to 'disabled' when debugging locally
+  run_id: 
+  monitor_gym: True
+  tags: 
+
+
+defaults:
+  - task: TieknungPro/TienkungProTrack-walk # G1: G1/G1Track-walk
+  - algo: ppo
+  - _self_
+
+task:
+  num_envs: 2048

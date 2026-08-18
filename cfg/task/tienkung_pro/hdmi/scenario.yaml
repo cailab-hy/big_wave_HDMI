@@ -1,0 +1,83 @@
+# @package task
+defaults:
+  - base_tienkung_pro/hdmi-base  #내가 수정한 파일 머리 고정
+  - _self_
+
+name: TienkungProScenario
+
+viewer:
+  env_spacing: 5.0
+
+  # show retarget motion (world frame; play.py uses num_envs=1 so env origin = world origin)
+  lookat: [0., 0., 0.5]
+  eye: [6.4, 5.0, 4.7]
+
+  # show training
+  # lookat: [0., 2., 0.5]
+  # eye: [0.0, 10.0, 4.0]
+
+  # show ref contact pos
+  # lookat: [-1., 0., 1.]
+  # eye: [-2., .5, 2.5]
+
+max_episode_length: 1250
+
+robot:
+  name: TienkungProTraining           # TienkungProTraining, TienkungPro
+  robot_type: TienkungPro
+  override_params:
+    init_state:
+      joint_pos:
+        elbow_yaw_l_joint: 0.0     # G1: left_wrist_yaw_joint: -0.4
+        elbow_yaw_r_joint: 0.0     # G1: right_wrist_yaw_joint: 0.4
+    # actuators:
+    #   arms:
+    #     stiffness:
+    #       ".*_wrist_roll_joint": 4.0
+    #       ".*_wrist_pitch_joint": 4.0
+    #       ".*_wrist_yaw_joint": 4.0
+
+command:
+  data_path: data/motion/tienkung_pro/scenario
+  root_body_name: "pelvis"
+
+  extra_object_names: ["support0", "support1"]
+  object_asset_name: "block"
+  object_body_name:  "Block"
+
+  object_pose_range:
+    x: [-0.0, 0.0]
+    y: [-0.0, 0.0]
+
+  contact_target_pos_offset:
+    - [-0.0, 0.175, 0.07]     # left wrist
+    - [-0.0,-0.175, 0.07]     # right wrist
+
+  contact_eef_pos_offset:
+    - [0.075, 0.0, -0.095]   # wrist_roll_l      # G1: [0.05, 0.0, 0.0]  # left wrist
+    - [0.075, 0.0, -0.095]   # wrist_roll_r      # G1: [0.05, 0.0, 0.0]  # right wrist
+
+randomization:
+  object_body_randomization:
+    static_dynamic_friction_ratio_range: [1.0, 2.0]
+    dynamic_friction_range: [0.3, 0.8]
+    restitution_range: [0.0, 0.2]
+    mass_range: [1.0, 1.0]
+    # mass_range: [1.0, 1.25]
+    # mass_range: [1.5, 1.75]
+  
+  # body_scale:
+  #   name: "block"
+  # #   # scale_range: [0.9, 1.1]
+  # #   # scale_range: [0.90, 0.9667]
+  # #   # scale_range: [0.9667, 1.0333]
+  # #   # scale_range: [1.0333, 1.10]
+  #   scale_range: [1.10, 1.1677]
+  # test_small:
+  #   scale_range: [0.90, 0.9667]
+
+  # test_medium:
+  #   scale_range: [0.9667, 1.0333]
+
+  # test_large:
+  #   scale_range: [1.0333, 1.10]
