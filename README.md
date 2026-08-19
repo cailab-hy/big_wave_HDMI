@@ -92,8 +92,8 @@ git checkout v2.3.0
 ### 2.4 이 저장소 (HDMI TienKung Pro)
 
 ```bash
-git clone https://github.com/cailab-hy/HDMI_Tienkung_Pro.git
-cd HDMI_Tienkung_Pro
+git clone https://github.com/cailab-hy/big_wave_HDMI.git
+cd big_wave_HDMI
 
 # USD 에셋은 git-lfs로 저장되어 있음 (30개 파일). 반드시 받아야 함
 git lfs pull
@@ -105,7 +105,7 @@ pip install -e .
 
 ```bash
 conda activate hdmi
-cd /path/to/HDMI_Tienkung_Pro
+cd /path/to/big_wave_HDMI
 
 # 1) 임포트 + CUDA 확인 → "2.7.0+cu128 True" 가 나와야 정상
 python -c "import isaacsim, isaaclab, active_adaptation, torch; print(torch.__version__, torch.cuda.is_available())"
@@ -133,7 +133,7 @@ wandb login          # 로깅을 쓸 경우
 
 ```bash
 conda activate hdmi
-cd /path/to/HDMI_Tienkung_Pro
+cd /path/to/big_wave_HDMI
 ```
 
 ---
