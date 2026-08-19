@@ -1,4 +1,4 @@
-# big_wave_HDMI ㅡ Tienkung Pro에 대한 HDMI 학습 코드 배포 
+# big_wave_HDMI ㅡ Tienkung Pro에 대한 HDMI 학습 
 
 HDMI 강화학습 프레임워크에 Tienkung Pro 휴머노이드 로봇을 적용한 저장소입니다.
 
