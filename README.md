@@ -10,7 +10,7 @@ HDMI 강화학습 프레임워크에 Tienkung Pro 휴머노이드 로봇을 적�
       ↓
 3. [big_wave_HDMI](https://github.com/cailab-hy/big_wave_HDMI)    (Policy Training)
       ↓
-4. [big_wave_Deloy](https://github.com/cailab-hy/big_wave_Deploy)  (Real Robot Deployment)
+4. [big_wave_Deploy](https://github.com/cailab-hy/big_wave_Deploy)  (Real Robot Deployment)
 
 
 ## 목차
@@ -198,7 +198,7 @@ python scripts/play.py algo=ppo_roa_train task=tienkung_pro/hdmi/scenario \
 
 해당 package를 실제 환경에서 돌리기 위해 아래 명시된 링크를 따라가세요.
 
-[big_wave_deploy] https://github.com/cailab-hy/big_wave_Deploy
+[big_wave_deploy](https://github.com/cailab-hy/big_wave_Deploy)
 
 ---
 
