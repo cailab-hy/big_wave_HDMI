@@ -286,17 +286,7 @@ class SimpleEnv(_Env):
             with open(path, "w") as f:
                 json.dump(asset_meta, f, indent=4)
         else:
-            from active_adaptation.envs.mujoco import MJScene, MJSim
-            from active_adaptation.assets_mjcf import ROBOTS
-
-            @configclass
-            class SceneCfg:
-                robot = ROBOTS[self.cfg.robot.name]
-                contact_forces = "robot"
-
-            self.scene = MJScene(SceneCfg())
-            self.sim = MJSim(self.scene)
-
+            pass 
     def _reset_idx(self, env_ids: torch.Tensor):
         init_root_state = self.command_manager.sample_init(env_ids)
         if init_root_state is not None and not self.robot.is_fixed_base:

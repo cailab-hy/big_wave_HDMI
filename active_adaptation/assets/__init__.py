@@ -1,14 +1,12 @@
 import os
 
 from .objects import *
-from .g1 import *
 from .tienkung_pro import *
 
 
 ASSET_PATH = os.path.dirname(__file__)
 
 ROBOTS = {
-    "g1": G1_CYLINDER_CFG,
     "TienkungProTraining": TIENKUNG_PRO_TRAINING_CFG,  # Lightweight (decimated meshes, no cameras)
 }
 
