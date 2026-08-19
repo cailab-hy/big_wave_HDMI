@@ -194,6 +194,8 @@ python scripts/play.py algo=ppo_roa_train task=tienkung_pro/hdmi/scenario \
 
 [big_wave_deploy] https://github.com/cailab-hy/big_wave_Deploy
 
+---
+
 ## 8. 기타
 
 학습, 시각화, 평가에 대한 자세한 사항은 문서를 참고하세요 
