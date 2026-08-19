@@ -4,7 +4,7 @@ HDMI 강화학습 프레임워크에 Tienkung Pro 휴머노이드 로봇을 적�
 
 전체 프로젝트의 세 번째 단계입니다.
 
-1. Kimodo               (Motion Generation)
+1. [Kimodo](https://github.com/nv-tlabs/kimodo)               (Motion Generation)
       ↓
 2. [big_wave_GMR](https://github.com/cailab-hy/big_wave_GMR)     (Motion Retargeting)   ← You are here
       ↓
