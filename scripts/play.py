@@ -62,7 +62,7 @@ def main(cfg):
                 m(x)
             return (time.perf_counter() - start) / 1000
         
-        FILE_PATH = os.path.dirname(__file__)
+        FILE_PATH = os.path.dirname(os.path.abspath(checkpoint_path))
         
         deploy_policy = copy.deepcopy(policy.get_rollout_policy("deploy"))
         obs_norm = ObsNorm.from_vecnorm(vecnorm, deploy_policy.in_keys)

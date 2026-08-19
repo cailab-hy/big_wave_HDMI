@@ -1,3 +1,12 @@
+# big_wave_HDMI ㅡ Tienkung Pro에 대한 HDMI 학습 코드 배포 
+
+HDMI 강화학습 프레임워크에 Tienkung Pro 휴머노이드 로봇을 적용한 저장소입니다.
+
+- **Data Transform repo**: [big_wave_GMR](https://github.com/cailab-hy/big_wave_GMR) — 참조 모션 파일
+- **Train repo**: [big_wave_HDMI](https://github.com/cailab-hy/big_wave_HDMI) — 정책 학습 / 평가 / ONNX export
+- **Deploy repo**: [big_wave_Deloy](https://github.com/cailab-hy/big_wave_Deploy) — Sim-to-Real 
+
+
 ## 목차
 
 1. [요구 사항](#1-요구-사항)
@@ -143,6 +152,14 @@ python scripts/play.py algo=ppo_roa_adapt_est task=tienkung_pro/hdmi/scenario \
   headless=false task.num_envs=1 app.enable_cameras=true export_policy=true
 ```
 
+#### 주의사항 
+
+```export_policy=true``` 를 넣어야 [SIM-TO-REAL](#7-sim-to-real) 를 위한 정책 파일 (.onnx)이 생성됩니다.
+생성된 onnx 파일은 "checkpoint_path" 에 저장됩니다.
+
+e.g. ~/exports/TienkungProScenario/...
+
+
 ---
 
 ## 5. 평가 (`eval.py`)
@@ -175,7 +192,7 @@ python scripts/play.py algo=ppo_roa_train task=tienkung_pro/hdmi/scenario \
 
 해당 package를 실제 환경에서 돌리기 위해 아래 명시된 링크를 따라가세요.
 
-https://github.com/cailab-hy/Deploy_Tienkung_Pro
+[big_wave_deploy] https://github.com/cailab-hy/big_wave_Deploy
 
 ## 8. 기타
 
@@ -198,3 +215,7 @@ primaryClass={cs.RO},
 url={https://arxiv.org/abs/2509.16757},
 }
 ```
+
+---
+
+본 프로젝트는 빅웨이브와 한양대학교 박태준 교수님 연구실 CAILAB에서 실시한 산학과제 결과물입니다.
