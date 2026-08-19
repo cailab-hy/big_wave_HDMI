@@ -2,9 +2,15 @@
 
 HDMI 강화학습 프레임워크에 Tienkung Pro 휴머노이드 로봇을 적용한 저장소입니다.
 
-- **Data Transform repo**: [big_wave_GMR](https://github.com/cailab-hy/big_wave_GMR) — 참조 모션 파일
-- **Train repo**: [big_wave_HDMI](https://github.com/cailab-hy/big_wave_HDMI) — 정책 학습 / 평가 / ONNX export
-- **Deploy repo**: [big_wave_Deloy](https://github.com/cailab-hy/big_wave_Deploy) — Sim-to-Real 
+전체 프로젝트의 세 번째 단계입니다.
+
+1. Kimodo               (Motion Generation)
+      ↓
+2. [big_wave_GMR](https://github.com/cailab-hy/big_wave_GMR)     (Motion Retargeting)   ← You are here
+      ↓
+3. [big_wave_HDMI](https://github.com/cailab-hy/big_wave_HDMI)    (Policy Training)
+      ↓
+4. [big_wave_Deloy](https://github.com/cailab-hy/big_wave_Deploy)  (Real Robot Deployment)
 
 
 ## 목차
